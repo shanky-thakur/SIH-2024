@@ -7,7 +7,7 @@ const apiKey = process.env.API_KEY;
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 app.get("/", (req, res) => {
-  res.send("please use the endpoint https://sih-2024-six.vercel.app/suggestions?location= followed by your district name");
+  res.send("please use the endpoint       https://sih-2024-six.vercel.app/suggestions?location={your_location_here}       followed by your district name");
 });
 
 app.get("/suggestions", async (req, res) => {
