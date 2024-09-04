@@ -15,10 +15,10 @@ app.get("/suggestions", async (req, res) => {
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const prompt = `please give me some general plant suggestions for ${req.query.location}, but sadly i do not have any other data like sunlight or climatic information. Please include crops, fruits, flowers and raw materials like cotton, jute, etc.`;
+  const prompt = `please give me some general plant suggestions for ${req.query.location}, but sadly i do not have any other data like sunlight or climatic information. Please include crops, fruits, flowers and raw materials like cotton, jute, etc. Also please provide data in json format including the text part you are sending. Also only send json data, no explanations or anything. No need to specify it as json with backticks.`;
 
   const result = await model.generateContent(prompt);
-  res.send(result.response.text());
+  res.send(JSON.stringify(result.response));
 });
 
 app.listen(port, () => {
